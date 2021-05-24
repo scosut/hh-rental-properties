@@ -1,0 +1,34 @@
+.header {
+  .header-container {
+    align-items: center;;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    @include atSm {
+      align-items: flex-start;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    
+    @include atMd {
+      padding: 0 15px;
+    }
+
+    .header-item {
+      padding: 2px 0;
+
+      i  {
+        color: $bg-gradient-primary;
+      }
+  
+      a:active,
+      a:hover,
+      a:link,
+      a:visited {
+        color: $text-primary;
+        text-decoration: none;
+      }
+    }
+  }
+}

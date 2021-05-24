@@ -1,0 +1,22 @@
+.breadcrumb {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+
+  .breadcrumb-item {
+    .breadcrumb-link:active,
+    .breadcrumb-link:hover,
+    .breadcrumb-link:link,
+    .breadcrumb-link:visited {
+      border-bottom: 1px solid transparent;
+      color: $bg-primary;
+      padding-bottom: 1px;
+      text-decoration: none;
+      transition: border-bottom 0.5s ease-in-out;
+    }
+
+    .breadcrumb-link:hover {
+      border-bottom: 1px solid $bg-primary;
+    }
+  }
+}

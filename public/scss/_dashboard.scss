@@ -1,0 +1,33 @@
+.dashboard-link:active,
+.dashboard-link:hover,
+.dashboard-link:link,
+.dashboard-link:visited {
+  color: $accent2;
+  text-decoration: none;
+}
+
+.dashboard-title {
+  color: $accent2;
+  text-align: left;
+}
+
+.dashboard-table {
+  font-size: 16px;
+  min-width: 450px;
+
+  th, 
+  td {
+    color: $text-primary;
+    padding: 5px;
+
+  }
+
+  thead th {
+    border-bottom: none;
+    font-size: 14px;
+  }
+
+  tfoot td {
+    border: none;
+  }  
+}

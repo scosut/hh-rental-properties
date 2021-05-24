@@ -1,0 +1,30 @@
+.page-item {
+  .page-link {
+    color: $accent2;
+
+    &:hover {
+        background-color: $hover-color ;
+        color: $accent2;
+    }
+
+    i {
+      color: rgba($accent2, 0.8);
+    }
+  }
+
+  &.active {
+    .page-link {
+      background-color: $accent2;
+      border-color: $accent2;
+      color: $hover-color ;
+    }
+  }
+
+  &.disabled {
+    .page-link {
+      i {
+        color: rgba($accent2, 0.5);
+      }
+    }
+  }
+}

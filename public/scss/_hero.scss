@@ -1,0 +1,25 @@
+.hero {
+  align-items: center;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) center center/100% 150px no-repeat, 
+  url(/public/img/falls_park.jpg) center center/cover no-repeat;
+  display: flex;
+  height: 450px;
+  justify-content: center;
+  position: relative;
+  text-align: center; 
+
+  h1 {
+    color: $text-hero;
+    font-family: $font-cursive;
+    font-size: 32px;
+    line-height: 1.4;
+
+    @include atSm {
+      font-size: 36px;
+    }
+
+    @include atMd {
+      font-size: 40px;
+    }
+  }
+}

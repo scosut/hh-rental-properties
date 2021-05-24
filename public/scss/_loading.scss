@@ -1,0 +1,22 @@
+.loading-overlay {
+	align-items: center;
+	background: #fff;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	opacity: 0.8;
+	position: absolute;
+	width: 100%;
+	z-index: 9999;
+			
+	.loading-overlay-spinner {
+		background-image: url(/public/img/loading.gif);
+		background-repeat: no-repeat;
+		height: 32px;
+		width: 32px;
+	}
+
+	&.loading-overlay-on {
+		display: flex;
+	}			
+}

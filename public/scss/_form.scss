@@ -1,0 +1,81 @@
+.form {
+  .form-control,
+  .custom-file-label {
+    &.flat {
+      background-color: rgba($accent1, 0.5);
+      color: $text-primary;
+    }
+  }
+
+  .custom-file-label:after {
+    display: none;
+  }
+
+  .custom-file-img {
+    display: block;
+    margin: 5px 5px 0 0;
+    max-width: 75px;
+  }
+
+  .form-group {
+    .col-form-label {
+      padding: 0;
+      position: relative;
+    
+      &.required {
+        padding-left: 8px;
+    
+        &:before {      
+          color: $text-required;
+          content: "*";
+          left: 0;
+          position: absolute;
+          top: 0;
+        }
+      }
+    }
+
+    .form-check:nth-of-type(n+2) {
+      margin-top: 2px;
+    }   
+
+    textarea.form-control {
+      resize: none;
+      height: 125px;
+    }
+    
+    input[type=checkbox].form-check-input {
+      margin-top: 3px;
+    }
+
+    select.form-control.timepicker {
+      option {
+        font-family: monospace;
+      }
+    }
+    
+    a.form-link,
+    a.form-link:focus,
+    a.form-link:hover {
+        border-bottom: 1px solid $accent2;
+        color: $accent2;
+        line-height: 1.2;
+        padding-bottom: 1px;
+        text-decoration: none;
+    }
+
+    a.form-link {
+      border-bottom: 1px solid transparent;
+      transition: all 0.5s ease-in-out;
+
+      &.form-link-decorated {
+        border-bottom: 1px solid $accent2;
+      }
+    }
+  }  
+}
+
+.form-legend {
+  font-size: 14px;
+  margin: 2px 0 24px 0;
+}

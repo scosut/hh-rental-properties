@@ -1,0 +1,66 @@
+.property {
+  h2 {
+    color: $accent2;
+    text-align: left;
+  }
+
+  h3 {
+    color: $accent2;
+    font-family: $font-cursive;
+    font-size: 22px;
+  }
+
+  .message-box {
+    border: 1px solid $accent2;
+    box-shadow: 4px 4px 2px rgba($accent2, .2);
+		height: 100%;
+    padding: 18px;
+		
+		@include atLg() {
+			height: auto;
+		}
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;  
+    }
+  }
+
+  .details {
+    display: table;
+
+    .details-row {
+      display: table-row;
+
+      .details-col {
+        display: table-cell;
+        font-size: 16px;
+        padding-bottom: 10px;
+
+        @include atSm {
+          font-size: 18px;
+        }
+
+        &:first-child {
+          position: relative;
+          padding-left: 15px;
+          padding-right: 15px;
+
+          &:before {
+            content: "\f105";
+            color: $accent2;
+            font-family: "FontAwesome";
+            left: 0;
+            position: absolute;
+            top: 0;
+          }
+        }
+
+        p {
+          font-size: inherit;
+          margin: 0;
+        }
+      }
+    }    
+  } 
+}

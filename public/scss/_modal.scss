@@ -1,0 +1,29 @@
+.modal {
+  .modal-header {
+    padding: 5px 10px;
+
+    h2 {
+      color: $accent2;
+      font-size: 24px;
+      text-align: left;
+    }
+
+    &.borderless {
+      border-bottom: none;
+    }
+  }  
+
+  .modal-body {
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    &.terms {
+      p {
+        font-size: 14px;
+        line-height: 1.3;
+      }
+    }
+  }
+}

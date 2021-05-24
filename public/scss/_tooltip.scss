@@ -1,0 +1,14 @@
+.bs-tooltip-bottom {
+  margin-top: 5px;
+
+  .tooltip-inner {
+    background-color: $bg-primary;
+    color: $accent1;
+  }
+
+  .arrow {
+    &::before {
+      border-bottom-color: $bg-primary;
+    }
+  }
+}

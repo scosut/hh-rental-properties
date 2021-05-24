@@ -1,0 +1,21 @@
+.dropdown {
+  .dropdown-menu {
+    padding: 0;
+    margin: 0;  
+  }
+
+  .dropdown-divider {
+    margin: 0;
+  }
+
+  .dropdown-item {
+    border-radius: inherit;
+    color: $text-primary;
+    padding: 5px 10px;
+
+    &:active,
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}

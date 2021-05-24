@@ -1,0 +1,34 @@
+.btn {
+  &.btn-more {
+    background-color: $bg-primary;
+    color: $accent1;
+    width: 100%;
+
+    &:hover {
+      color: $accent1;
+    }
+  }
+
+  &.btn-back,
+	&.btn-modal-back,
+	&.btn-modal-next,
+  &.btn-next,
+  &.btn-schedule {
+    background-color: $accent3;
+    color: $text-hero;
+
+    &:hover {
+      color: $text-hero;
+    }
+  }
+
+  &.btn-schedule {
+    width: 100%;
+  }
+
+  &.btn-back,
+	&.btn-modal-back {
+    background-color: rgba($accent2, 0.5);
+    margin-right: 5px;
+  }
+}

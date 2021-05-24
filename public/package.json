@@ -1,0 +1,24 @@
+{
+  "name": "hh-rental-properties",
+  "version": "1.0.0",
+  "description": "H&H Rental Properties website",
+  "main": "index.js",
+  "browserslist": [
+    "> 1%",
+    "last 10 versions"
+  ],
+  "scripts": {
+    "compile:scss": "node-sass scss/styles.scss --output-style compressed > css/styles.css",
+    "prefix:css": "postcss css/styles.css -u autoprefixer -o css/styles.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "node-sass": "^4.14.1",
+    "postcss-cli": "^7.1.2"
+  },
+  "dependencies": {
+    "postcss": "^7.0.32"
+  }
+}

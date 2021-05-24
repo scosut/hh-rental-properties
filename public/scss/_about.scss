@@ -1,0 +1,32 @@
+.about {
+  h2 {
+    color: $accent2;
+    font-size: 24px;
+  }
+
+  .media {
+    flex-direction: column;
+
+    @include atMd {
+      flex-direction: row;
+    }
+  }
+
+  .image-group {
+    figure {
+      display: block;
+      margin-bottom: 15px;
+      width: 175px;
+
+      img {
+        width: 100%;
+      }
+
+      figcaption {
+        font-size: 18px;
+				margin-top: 5px;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+.card {
+  height: 100%;
+  margin: auto;
+  max-width: 208px;
+
+  .card-img-wrapper {
+    position: relative;
+  
+    .card-price {
+      background-color: $accent2;
+      border-radius: 0.25rem;
+      color: $text-hero;
+      left: 7px;
+      padding: 3px;
+      position: absolute;
+      top: 7px;
+    }
+
+    &.unavailable .card-price,
+    &.coming-soon .card-price {
+      display: none;
+    }
+
+    &.coming-soon:before,
+    &.unavailable:before {      
+      content: "";
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;      
+      width: 100%;
+      z-index: 999;
+    }
+
+    &.coming-soon:before {
+      background: url(/public/img/coming_soon.png) center center/70% no-repeat, linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) center center/contain no-repeat;
+    }
+
+    &.unavailable:before {
+      background: url(/public/img/unavailable.png) center center/70% no-repeat, linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) center center/contain no-repeat;
+    }      
+  }
+
+  .card-body  {
+    padding: 0 10px;
+  }
+  
+  .card-title {
+    font-size: 17px;
+    margin: 10px 0 0 0;
+    text-align: center;
+  
+    span {
+      display: block;
+      font-size: 15px;
+    }
+  }
+
+  .card-details {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+    justify-content: space-between;
+    padding: 20px 0 0 0;
+  
+    i {
+      color: $accent2;
+    }
+  
+    .card-details-item {
+      > div {
+        padding: 10px 0 0 0;
+      }
+  
+      > a.btn,
+			> button {
+        margin: 30px 0 8px 0;
+      }
+    }
+  }
+
+  &.card-form {
+    max-width: 400px;
+  
+    .card-title {
+      color: $accent2;
+      font-family: $font-sans-serif;
+      font-size: 20px;
+      text-align: left;
+    }
+  }
+
+  .inner-card {
+    border: 1px solid rgba(#000, 0.063);
+    border-radius: 0.25rem;
+    margin: 25px 0 20px 0;
+
+    .inner-card-title {
+      padding: 5px 5px 0 5px;
+
+      &.form-group {
+        margin-bottom: 0;
+      }
+    }
+
+    .inner-card-body {
+      padding: 0 15px;
+    }
+  }
+}
