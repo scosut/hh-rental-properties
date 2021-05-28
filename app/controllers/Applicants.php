@@ -48,7 +48,7 @@
 			# email message
 			$msg  = "<html><head><title>Rental Application</title></head><body>";
 			$msg  = "<p>Hello, Property Manager.</p>";
-			$msg .= "<p>$app->applicant_first_name $app->applicant_last_name submitted a rental application for property $app->property_location. To view the details of the application, login to the <a href=\"http://www.local-hh-rental-properties.com/login\">H&amp;H Rental Properties</a> website and then select 'Applicants' from the 'ADMIN' menu. From the list of applicants, click on the 'View Application' icon (eye) in the 'Action' column for $app->applicant_first_name $app->applicant_last_name.</p>";
+			$msg .= "<p>$app->applicant_first_name $app->applicant_last_name submitted a rental application for property $app->property_location. To view the details of the application, login to the <a href=\"https://rent.projectsbyscott.com/login\">H&amp;H Rental Properties</a> website and then select 'Applicants' from the 'ADMIN' menu. From the list of applicants, click on the 'View Application' icon (eye) in the 'Action' column for $app->applicant_first_name $app->applicant_last_name.</p>";
 			$msg .= "</body>";
 			$msg .= "</html>";
 			

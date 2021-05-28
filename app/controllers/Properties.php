@@ -97,7 +97,8 @@
 			# email message
 			$msg  = "<html><head><title>Schedule Showing</title></head><body>";
 			$msg  = "<p>Hello, $name.</p>";
-			$msg .= "<p>You have scheduled a showing of property $property for $date at $time.</p>";
+			$msg .= "<p>You have scheduled a showing of property $property for $date at $time. ";
+			$msg .= "We will check our availability and confirm this date and time with you.</p>";
 			$msg .= "<p>Sincerely,</p>";
 			$msg .= "<p>H&amp;H Rental Properties</p>";
 			$msg .= "</body>";
