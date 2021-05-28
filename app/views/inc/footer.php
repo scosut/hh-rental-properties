@@ -5,7 +5,7 @@
 				<div class="footer-item">
 					<div>&copy; H&amp;H Rental Properties</div>
 					<div><a href="tel:6059406696">(605) 940-6696</a></div>
-					<div><a href="mailto:info@hhproperties.com">info@handhrentalproperties.com</a></div>
+					<div><a href="mailto:info@handhrentalproperties.com">info@handhrentalproperties.com</a></div>
 					<div>PO Box 547, Wakonda, SD 57073</div>
 				</div>
 				<div class="footer-item w-100 mt-0"></div>

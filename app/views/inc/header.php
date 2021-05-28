@@ -23,7 +23,7 @@
 				<i class="fa fa-phone"></i> <a href="tel:6059406695">(605) 940-6696</a>
 			</div>
 			<div class="header-item">
-				<i class="fa fa-envelope"></i> <a href="mailto:info@hhproperties.com">info@handhrentalproperties.com</a>
+				<i class="fa fa-envelope"></i> <a href="mailto:info@handhrentalproperties.com">info@handhrentalproperties.com</a>
 			</div>
 		</div>
 	</header>
