@@ -52,8 +52,7 @@
 			$msg .= "</body>";
 			$msg .= "</html>";
 			
-			// return Utility::sendEmail("info@handhrentalproperties.com", "Rental Application", $msg);
-			return Utility::sendEmail("wolfcrkfarm@hotmail.com", "Rental Application", $msg);
+			return Utility::sendEmail("info@handhrentalproperties.com", "Rental Application", $msg);
 		}
 		
 		private function sendApplicantEmail($app, $doc) {			
@@ -66,8 +65,7 @@
 			$msg .= "</body>";
 			$msg .= "</html>";
 			
-			// return Utility::sendEmail($app->applicant_email, "Rental Application", $msg, $doc);
-			return Utility::sendEmail("wolfcrkfarm@hotmail.com", "Rental Application", $msg, $doc);
+			return Utility::sendEmail($app->applicant_email, "Rental Application", $msg, $doc);
 		}
 		
 		public function index() {
@@ -209,9 +207,10 @@
 								Validate::isZip($data->zip, "Please enter valid zip.");
 								Validate::isNotEmpty($data->supervisorName, "Please enter supervisor name.");
 								Validate::isPhone($data->supervisorPhone, "Please enter valid supervisor phone.");
-								Validate::isNotEmpty($data->yearsEmployed, "Please enter years employed.");
-								Validate::isNotEmpty($data->monthlyIncome, "Please enter monthly income.");
+								Validate::isNotEmpty($data->yearsEmployed, "Please enter years employed.");								
 					}
+					
+					Validate::isNotEmpty($data->monthlyIncome, "Please enter monthly income.");
 					
 					$firstError = Validate::getFirstError($data);
 					$firstError = $firstError == "status" ? "empCurrApp-fullTime" : $firstError;
@@ -310,8 +309,9 @@
 								Validate::isNotEmpty($data->supervisorName, "Please enter supervisor name.");
 								Validate::isPhone($data->supervisorPhone, "Please enter valid supervisor phone.");
 								Validate::isNotEmpty($data->yearsEmployed, "Please enter years employed.");
-								Validate::isNotEmpty($data->monthlyIncome, "Please enter monthly income.");
-					}
+					}					
+					
+					Validate::isNotEmpty($data->monthlyIncome, "Please enter monthly income.");
 					
 					$firstError = Validate::getFirstError($data);
 					$firstError = $firstError == "status" ? "empCurrCoapp-fullTime" : $firstError;

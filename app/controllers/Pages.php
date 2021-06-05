@@ -30,6 +30,11 @@
 			Utility::logout();
 		}
 		
+		/*public function password() {
+			$this->adminModel->updatePassword("username", "password");
+			Utility::redirect("apply");
+		}*/
+		
 		public function login() {
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$post = json_decode($_POST["data"], true);

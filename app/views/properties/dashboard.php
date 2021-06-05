@@ -14,6 +14,7 @@
 			<i class="fa fa-plus-square"></i>
 		</a>
 	</div>
+	<?php if(count($data["properties"]) > 0): ?>
 	<div class="table-responsive mb-5">
 		<table class="dashboard-table table table-bordered table-striped">
 			<thead>
@@ -78,6 +79,9 @@
 			</tfoot>
 		</table>
 	</div>
+	<?php else: ?>
+	<p>No properties available.</p>
+	<?php endif; ?>
 </div>
 
 <div class="modal fade" id="deletePropertyModal" tabindex="-1" role="dialog" aria-labelledby="deletePropertyModal" aria-hidden="true">

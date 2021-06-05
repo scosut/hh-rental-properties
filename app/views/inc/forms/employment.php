@@ -43,8 +43,3 @@
 	<input type="text" name="yearsEmployed" class="form-control flat" />
 	<div class="invalid-feedback"></div>
 </div>
-<div class="form-group">
-	<label class="col-form-label required">Monthly Income</label>
-	<input type="text" name="monthlyIncome" class="form-control flat" data-inputmask="'alias': 'currency', 'rightAlign': false" />
-	<div class="invalid-feedback"></div>
-</div>

@@ -89,8 +89,7 @@
 			$msg .= "</body>";
 			$msg .= "</html>";
 			
-			// return Utility::sendEmail("info@handhrentalproperties.com", "Schedule Showing", $msg);
-			return Utility::sendEmail("wolfcrkfarm@hotmail.com", "Schedule Showing", $msg);
+			return Utility::sendEmail("info@handhrentalproperties.com", "Schedule Showing", $msg);			
 		}
 		
 		private function sendSchedulerEmail($name, $email, $date, $time, $property) {
@@ -104,8 +103,7 @@
 			$msg .= "</body>";
 			$msg .= "</html>";
 			
-			// return Utility::sendEmail($email, "Schedule Showing", $msg);
-			return Utility::sendEmail("wolfcrkfarm@hotmail.com", "Schedule Showing", $msg);
+			return Utility::sendEmail($email, "Schedule Showing", $msg);			
 		}
 		
 		public function index() {

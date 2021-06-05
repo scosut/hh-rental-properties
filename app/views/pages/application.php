@@ -77,6 +77,12 @@
 					<?php require APP_ROOT."/views/inc/forms/employment.php"; ?>
 				</div>
 				
+				<div class="form-group">
+					<label class="col-form-label required">Monthly Income</label>
+					<input type="text" name="monthlyIncome" class="form-control flat" data-inputmask="'alias': 'currency', 'rightAlign': false" />
+					<div class="invalid-feedback"></div>
+				</div>
+				
 				<div class="form-group mt-4">
 					<input type="hidden" name="hdnFormId" value="empCurrApp" />
 					<input type="hidden" name="hdnCoapp"  />				
@@ -123,6 +129,11 @@
 						<input type="text" name="employer" class="form-control flat" />
 					</div>
 					<?php require APP_ROOT."/views/inc/forms/employment.php"; ?>
+					<div class="form-group">
+						<label class="col-form-label required">Monthly Income</label>
+						<input type="text" name="monthlyIncome" class="form-control flat" data-inputmask="'alias': 'currency', 'rightAlign': false" />
+						<div class="invalid-feedback"></div>
+					</div>
 				</div>
 				
 				<div class="form-group mt-4">
@@ -213,7 +224,13 @@
 						<label class="col-form-label required">Current Employer</label>
 						<input type="text" name="employer" class="form-control flat" />
 					</div>
-					<?php require APP_ROOT."/views/inc/forms/employment.php"; ?>
+					<?php require APP_ROOT."/views/inc/forms/employment.php"; ?>					
+				</div>
+				
+				<div class="form-group">
+					<label class="col-form-label required">Monthly Income</label>
+					<input type="text" name="monthlyIncome" class="form-control flat" data-inputmask="'alias': 'currency', 'rightAlign': false" />
+					<div class="invalid-feedback"></div>
 				</div>
 				
 				<div class="form-group mt-4">
@@ -262,6 +279,11 @@
 						<input type="text" name="employer" class="form-control flat" />
 					</div>
 					<?php require APP_ROOT."/views/inc/forms/employment.php"; ?>
+					<div class="form-group">
+						<label class="col-form-label required">Monthly Income</label>
+						<input type="text" name="monthlyIncome" class="form-control flat" data-inputmask="'alias': 'currency', 'rightAlign': false" />
+						<div class="invalid-feedback"></div>
+					</div>
 				</div>
 				
 				<div class="form-group mt-4">

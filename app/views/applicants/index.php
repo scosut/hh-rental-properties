@@ -10,10 +10,13 @@
 <div class="container">
 	<div class="d-flex align-items-center justify-content-between mb-3">
 		<h2 class="dashboard-title">Applicants</h2>
+		<?php if(count($data["applicants"]) > 0): ?>
 		<a href="/applicants/export" class="dashboard-link" data-toggle="tooltip" data-placement="bottom" title="export Excel">
 			<i class="fa fa-table"></i>
 		</a>
+		<?php endif; ?>
 	</div>
+	<?php if(count($data["applicants"]) > 0): ?>
 	<div class="table-responsive mb-5">
 		<table class="dashboard-table table table-bordered table-striped">
 			<thead>
@@ -73,6 +76,9 @@
 			</tfoot>
 		</table>
 	</div>
+	<?php else: ?>
+	<p>No applicants available.</p>
+	<?php endif; ?>
 </div>
 
 <?php require APP_ROOT."/views/inc/footer.php"; ?>
