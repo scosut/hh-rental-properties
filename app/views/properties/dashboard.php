@@ -10,9 +10,14 @@
 <div class="container">
 	<div class="d-flex align-items-center justify-content-between mb-3">
 		<h2 class="dashboard-title">Properties</h2>
-		<a href="/properties/new" class="dashboard-link" data-toggle="tooltip" data-placement="bottom" title="add property">
-			<i class="fa fa-plus-square"></i>
-		</a>
+		<div>
+			<a href="/pages/download" class="dashboard-link mr-3" data-toggle="tooltip" data-placement="bottom" title="download instructions">
+				<i class="fa fa-download"></i>
+			</a>
+			<a href="/properties/new" class="dashboard-link" data-toggle="tooltip" data-placement="bottom" title="add property">
+				<i class="fa fa-plus-square"></i>
+			</a>			
+		</div>
 	</div>
 	<?php if(count($data["properties"]) > 0): ?>
 	<div class="table-responsive mb-5">

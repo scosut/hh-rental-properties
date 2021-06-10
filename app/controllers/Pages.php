@@ -26,6 +26,10 @@
 			$this->view("pages/confirm");
 		}
 		
+		public function download() {
+			$this->view("pages/download");
+		}
+		
 		public function logout() {
 			Utility::logout();
 		}

@@ -48,7 +48,7 @@
 			# email message
 			$msg  = "<html><head><title>Rental Application</title></head><body>";
 			$msg  = "<p>Hello, Property Manager.</p>";
-			$msg .= "<p>$app->applicant_first_name $app->applicant_last_name submitted a rental application for property $app->property_location. To view the details of the application, login to the <a href=\"https://rent.projectsbyscott.com/login\">H&amp;H Rental Properties</a> website and then select 'Applicants' from the 'ADMIN' menu. From the list of applicants, click on the 'View Application' icon (eye) in the 'Action' column for $app->applicant_first_name $app->applicant_last_name.</p>";
+			$msg .= "<p>$app->applicant_first_name $app->applicant_last_name submitted a rental application for property $app->property_location. To view the details of the application, login to the <a href=\"https://www.handhrentalproperties.com/login\">H&amp;H Rental Properties</a> website and then select 'Applicants' from the 'ADMIN' menu. From the list of applicants, click on the 'View Application' icon (eye) in the 'Action' column for $app->applicant_first_name $app->applicant_last_name.</p>";
 			$msg .= "</body>";
 			$msg .= "</html>";
 			
@@ -62,6 +62,10 @@
 			$msg .= "<p>Thank you for submitting your rental application for property $app->property_location. Please allow 24&#8209;72 business hours for review of your application and reference checks. It would be helpful to advise your references that they will be receiving a phone call. Also, expect an email from Rent Prep within 24&#8209;72 hours</p>";
 			$msg .= "<p>Sincerely,</p>";
 			$msg .= "<p>H&amp;H Rental Properties</p>";
+			$msg .= "<p><strong>NOTE:</strong><br>";
+			$msg .= "The attachment is best viewed using Adobe Acrobat Reader. Visit ";
+			$msg .= "<a href=\"https://get.adobe.com/reader/\">https://get.adobe.com/reader/</a> ";
+			$msg .= "to download your free copy of this software.</p>";
 			$msg .= "</body>";
 			$msg .= "</html>";
 			
