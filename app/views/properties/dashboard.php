@@ -50,7 +50,7 @@
 							<i class="fa fa-sort-numeric-asc mr-2"></i>
 						</a>
 						<?php endif; ?>
-						<a href="#" class="dashboard-link delete" data-toggle="tooltip" data-placement="bottom" title="delete property" data-property="<?= $p->id; ?>" data-address="<?= $p->address; ?>">
+						<a href="#" class="dashboard-link delete-property" data-toggle="tooltip" data-placement="bottom" title="delete property" data-property="<?= $p->id; ?>" data-address="<?= $p->address; ?>">
 							<i class="fa fa-trash"></i>
 						</a>
 					</td>

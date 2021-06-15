@@ -6,6 +6,20 @@
 			$this->db = new Database();
 		}
 		
+		public function deleteApplicant($arr) {
+			$this->db->query("CALL spDeleteApplicant(:_applicantId, :_coapplicantId)");
+			
+			$params = [
+				":_applicantId"   => $arr[0],
+				":_coapplicantId" => empty($arr[1]) ? null : $arr[1]
+			];
+			
+			$this->db->bindArray($params);
+			
+			# execute
+			return $this->db->execute();
+		}
+		
 		# find all application data for Print version
 		public function getPrint($arr) {
 			$this->db->query("CALL spGetPrint(:_propertyId, :_applicantId, :_coapplicantId, :_aesKey)");

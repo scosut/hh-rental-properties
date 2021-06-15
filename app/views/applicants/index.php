@@ -43,7 +43,10 @@
 							<i class="fa fa-eye mr-2"></i>
 						</a>
 						<a href='<?= "/applicants/email/{$p->propId},{$p->appId},{$p->coappId}"; ?>' class="dashboard-link dashboard-link-email edit" data-toggle="tooltip" data-placement="bottom" title="send email">
-							<i class="fa fa-envelope-o"></i>
+							<i class="fa fa-envelope-o mr-2"></i>
+						</a>
+						<a href="#" class="dashboard-link delete-applicant" data-toggle="tooltip" data-placement="bottom" title="delete applicant" data-applicant='<?= "$p->appId;;;$p->coappId"; ?>' data-name='<?= "$p->firstName $p->lastName"; ?>'>
+							<i class="fa fa-trash"></i>
 						</a>						
 					</td>
 				</tr>				
@@ -79,6 +82,26 @@
 	<?php else: ?>
 	<p>No applicants available.</p>
 	<?php endif; ?>
+</div>
+
+<div class="modal fade" id="deleteApplicantModal" tabindex="-1" role="dialog" aria-labelledby="deleteApplicantModal" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Delete Applicant</h2>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">                
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<form method="post">
+					<button type="button" class="btn btn-back" data-dismiss="modal">CANCEL</button>
+					<button type="submit" class="btn btn-next">CONFIRM</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 <?php require APP_ROOT."/views/inc/footer.php"; ?>

@@ -137,7 +137,7 @@ $(function() {
 			}		
 		});
 	
-		$(".dashboard-link.delete").click(function(e) {
+		$(".dashboard-link.delete-property").click(function(e) {
 			e.preventDefault();
 			var content   = $(e.currentTarget).attr("data-address");
 			var property  = $(e.currentTarget).attr("data-property");
@@ -158,6 +158,30 @@ $(function() {
 			});
 			
 			modalBody.html("<p>You have chosen to delete property " + content + ". Click 'Confirm' to proceed or 'Cancel' to abort.</p>");
+    	modal.modal("show");
+		});
+	
+		$(".dashboard-link.delete-applicant").click(function(e) {
+			e.preventDefault();
+			var content   = $(e.currentTarget).attr("data-name");
+			var applicant = $(e.currentTarget).attr("data-applicant");
+			var modal     = $("#deleteApplicantModal");
+  		var modalBody = $("#deleteApplicantModal .modal-body");
+			var form      = $("#deleteApplicantModal form");
+
+    	form.submit(function(e) {
+				e.preventDefault();
+				e.target.action = "/applicants/delete/" + applicant;
+				modal.modal("hide");
+				window.scrollTo(0, 0);
+				$(".loading-overlay").addClass("loading-overlay-on");
+				setTimeout(function() {
+					$(".loading-overlay").removeClass("loading-overlay-on");
+					e.target.submit();
+				}, 400);
+			});
+			
+			modalBody.html("<p>You have chosen to delete applicant " + content + ". Click 'Confirm' to proceed or 'Cancel' to abort.</p>");
     	modal.modal("show");
 		});
 	

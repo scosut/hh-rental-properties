@@ -846,5 +846,28 @@
 				}
 			}
 		}
+		
+		public function delete($str) {
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				$arr = explode(";;;", $str);
+				$err = $this->applicantModel->deleteApplicant($arr);
+				$err = $err == false ? "error deleting applicant" : "";
+				$firstError = "";
+
+				if (empty($err)) {
+					Utility::redirect("applicants/index");
+				}
+				else {
+					echo json_encode(["succeeded" => false, "errors" => $err, "firstError" => $firstError]);
+				}
+			}
+			else {
+				if (!Utility::isAdmin()) {
+					Utility::redirect("");
+				}
+				
+				Utility::redirect("applicants/index");
+			}
+		}
 	}
 ?>
