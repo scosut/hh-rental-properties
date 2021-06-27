@@ -21,12 +21,18 @@
 		private function getPdf($applicant) {
 			$this->splitDelimitedFields($applicant, "dependent_names", "dependent", "name", true);
 			$this->splitDelimitedFields($applicant, "dependent_dobs", "dependent", "dob", true);
-			$this->splitDelimitedFields($applicant, "reference_names", "references", "name", true);
-			$this->splitDelimitedFields($applicant, "reference_phones", "references", "phone", true);
-			$this->splitDelimitedFields($applicant, "reference_relationships", "references", "relationship", true
+			$this->splitDelimitedFields($applicant, "applicant_reference_names", "applicant_references", "name", true);
+			$this->splitDelimitedFields($applicant, "applicant_reference_phones", "applicant_references", "phone", true);
+			$this->splitDelimitedFields($applicant, "applicant_reference_relationships", "applicant_references", "relationship", true
 			);
-			$this->splitDelimitedFields($applicant, "reference_years", "references", "years_known", true);
-			$this->splitDelimitedFields($applicant, "reference_addresses", "references", "address", true);
+			$this->splitDelimitedFields($applicant, "applicant_reference_years", "applicant_references", "years_known", true);
+			$this->splitDelimitedFields($applicant, "applicant_reference_addresses", "applicant_references", "address", true);
+			$this->splitDelimitedFields($applicant, "co_applicant_reference_names", "co_applicant_references", "name", true);
+			$this->splitDelimitedFields($applicant, "co_applicant_reference_phones", "co_applicant_references", "phone", true);
+			$this->splitDelimitedFields($applicant, "co_applicant_reference_relationships", "co_applicant_references", "relationship", true
+			);
+			$this->splitDelimitedFields($applicant, "co_applicant_reference_years", "co_applicant_references", "years_known", true);
+			$this->splitDelimitedFields($applicant, "co_applicant_reference_addresses", "co_applicant_references", "address", true);
 			$this->splitDelimitedFields($applicant, "vehicle_makes", "vehicle", "make", true);
 			$this->splitDelimitedFields($applicant, "vehicle_models", "vehicle", "model", true);
 			$this->splitDelimitedFields($applicant, "vehicle_colors", "vehicle", "color", true);
@@ -136,7 +142,7 @@
 			
 			foreach($applicants as $applicant) {
 				$this->splitDelimitedFields($applicant, "Dependent_Names", "Dependent", "Name");
-				$this->splitDelimitedFields($applicant, "Dependent_DOBs", "Dependent", "Date_of_Birth");
+				$this->splitDelimitedFields($applicant, "Dependent_DOBs", "Dependent", "Date_of_Birth");				
 				$this->splitDelimitedFields($applicant, "Reference_Names", "Reference", "Name");
 				$this->splitDelimitedFields($applicant, "Reference_Phones", "Reference", "Phone");
 				$this->splitDelimitedFields($applicant, "Reference_Relationships", "Reference", "Relationship");
@@ -262,6 +268,58 @@
 					$firstError = $firstError == "convicted" ? "creditApp-convicted-yes" : $firstError;
 				}
 
+        if ($formId == "currResApp") {
+					Validate::isNotEmpty($data->address, "Please enter address.");
+					Validate::isNotEmpty($data->city, "Please enter city.");
+					Validate::isNotEmpty($data->state, "Please select state.");
+					Validate::isZip($data->zip, "Please enter valid zip.");
+					Validate::isNotEmpty($data->payment, "Please enter monthly payment.");
+					Validate::isNotEmpty($data->rentOwn, "Please select a response.");
+					Validate::isNotEmpty($data->landlordName, "Please enter landlord/mortgagee name.");
+					Validate::isPhone($data->landlordPhone, "Please enter valid landlord/mortgagee phone.");
+					Validate::isNotEmpty($data->leavingReason, "Please enter reason for leaving.");
+					
+					$firstError = Validate::getFirstError($data);
+					$firstError = $firstError == "rentOwn" ? "currResApp-rentOwn-rent" : $firstError;
+				}
+
+				if ($formId == "prevResApp") {
+					Validate::isNotEmpty($data->residence, "Please select a response.");
+					
+					if ($data->residence->value == "yes") {
+						Validate::isNotEmpty($data->address, "Please enter address.");
+						Validate::isNotEmpty($data->city, "Please enter city.");
+						Validate::isNotEmpty($data->state, "Please select state.");
+						Validate::isZip($data->zip, "Please enter valid zip.");
+						Validate::isNotEmpty($data->payment, "Please enter monthly payment.");
+						Validate::isNotEmpty($data->rentOwn, "Please select a response.");
+						Validate::isNotEmpty($data->landlordName, "Please enter landlord/mortgagee name.");
+						Validate::isPhone($data->landlordPhone, "Please enter valid landlord/mortgagee phone.");
+						Validate::isNotEmpty($data->leavingReason, "Please enter reason for leaving.");					
+					}
+					
+					$firstError = Validate::getFirstError($data);
+					$firstError = $firstError == "residence" ? "prevResApp-residence-yes" : $firstError;
+					$firstError = $firstError == "rentOwn" ? "prevResApp-rentOwn-rent" : $firstError;
+				}
+
+				if ($formId == "referencesApp") {
+					foreach([1, 2, 3] as $num) {
+						Validate::isNotEmpty($data->{"name$num"}, "Please enter name.");
+						Validate::isPhone($data->{"phone$num"}, "Please enter valid phone.");
+						Validate::isNotEmpty($data->{"relationship$num"}, "Please enter relationship.");
+						Validate::isNotEmpty($data->{"yearsKnown$num"}, "Please enter years known.");
+						Validate::isNotEmpty($data->{"address$num"}, "Please enter address.");
+					}
+				}				
+
+				if ($formId == "emergencyApp") {
+					Validate::isNotEmpty($data->name, "Please enter name.");
+					Validate::isPhone($data->phone, "Please enter valid phone.");
+					Validate::isNotEmpty($data->relationship, "Please enter relationship.");
+					Validate::isNotEmpty($data->address, "Please enter address.");
+				}
+
 				if ($formId == "infoCoapp") {
 					Validate::isNotEmpty($data->coapp, "Please select a response.");
 					
@@ -363,18 +421,7 @@
 					$firstError = $firstError == "convicted" ? "creditCoapp-convicted-yes" : $firstError;
 				}
 
-				if ($formId == "dependents") {
-					Validate::isNotEmpty($data->numDependents, "Please select number of dependents.");
-					
-					if (intval($data->numDependents->value) > 0) {
-						for($num = 1; $num <= intval($data->numDependents->value); $num++) {
-							Validate::isNotEmpty($data->{"name$num"}, "Please enter name.");
-							Validate::isPastDate($data->{"dob$num"}, "Please enter past date.");
-						}
-					}
-				}
-
-				if ($formId == "currRes") {
+        if ($formId == "currResCoapp") {
 					Validate::isNotEmpty($data->address, "Please enter address.");
 					Validate::isNotEmpty($data->city, "Please enter city.");
 					Validate::isNotEmpty($data->state, "Please select state.");
@@ -386,10 +433,10 @@
 					Validate::isNotEmpty($data->leavingReason, "Please enter reason for leaving.");
 					
 					$firstError = Validate::getFirstError($data);
-					$firstError = $firstError == "rentOwn" ? "currRes-rentOwn-rent" : $firstError;
+					$firstError = $firstError == "rentOwn" ? "currResCoapp-rentOwn-rent" : $firstError;
 				}
 
-				if ($formId == "prevRes") {
+				if ($formId == "prevResCoapp") {
 					Validate::isNotEmpty($data->residence, "Please select a response.");
 					
 					if ($data->residence->value == "yes") {
@@ -405,11 +452,11 @@
 					}
 					
 					$firstError = Validate::getFirstError($data);
-					$firstError = $firstError == "residence" ? "prevRes-residence-yes" : $firstError;
-					$firstError = $firstError == "rentOwn" ? "prevRes-rentOwn-rent" : $firstError;
+					$firstError = $firstError == "residence" ? "prevResCoapp-residence-yes" : $firstError;
+					$firstError = $firstError == "rentOwn" ? "prevResCoapp-rentOwn-rent" : $firstError;
 				}
 
-				if ($formId == "references") {
+				if ($formId == "referencesCoapp") {
 					foreach([1, 2, 3] as $num) {
 						Validate::isNotEmpty($data->{"name$num"}, "Please enter name.");
 						Validate::isPhone($data->{"phone$num"}, "Please enter valid phone.");
@@ -419,12 +466,23 @@
 					}
 				}				
 
-				if ($formId == "emergency") {
+				if ($formId == "emergencyCoapp") {
 					Validate::isNotEmpty($data->name, "Please enter name.");
 					Validate::isPhone($data->phone, "Please enter valid phone.");
 					Validate::isNotEmpty($data->relationship, "Please enter relationship.");
 					Validate::isNotEmpty($data->address, "Please enter address.");
 				}
+
+				if ($formId == "dependents") {
+					Validate::isNotEmpty($data->numDependents, "Please select number of dependents.");
+					
+					if (intval($data->numDependents->value) > 0) {
+						for($num = 1; $num <= intval($data->numDependents->value); $num++) {
+							Validate::isNotEmpty($data->{"name$num"}, "Please enter name.");
+							Validate::isPastDate($data->{"dob$num"}, "Please enter past date.");
+						}
+					}
+				}				
 
 				if ($formId == "vehicles") {
 					Validate::isNotEmpty($data->numVehicles, "Please select number of vehicles.");
@@ -516,7 +574,7 @@
 							"supervisorName"  => null,
 							"supervisorPhone" => null,
 							"yearsEmployed"   => null,
-							"monthlyIncome"   => null					
+							"monthlyIncome"   => str_replace(",", "", $form["monthlyIncome"])		
 						];
 					
 					if (strpos($form["status"], "full time") !== false || 
@@ -530,7 +588,6 @@
 							$data["supervisorName"]  = $form["supervisorName"];
 							$data["supervisorPhone"] = $form["supervisorPhone"];
 							$data["yearsEmployed"]   = $form["yearsEmployed"];
-							$data["monthlyIncome"]   = str_replace(",", "", $form["monthlyIncome"]);
 					}				
 
 					$err = $this->applicantModel->addEmployment($data);
@@ -577,6 +634,85 @@
 					$err = $err == false ? "error adding applicant credit history" : "";
 				}
 
+        if (empty($err) && !empty($applicantId) && array_key_exists("currResApp", $post)) {
+					$form = $post["currResApp"];
+					$data = [
+						"applicantId"   => $applicantId,
+						"type"          => "current",
+						"address"       => $form["address"],
+						"city"          => $form["city"],
+						"state"         => $form["state"],
+						"zip"           => $form["zip"],
+						"payment"       => str_replace(",", "", $form["payment"]),
+						"rentOwn"       => $form["rentOwn"],
+						"landlordName"  => $form["landlordName"],
+						"landlordPhone" => $form["landlordPhone"],
+						"leavingReason" => $form["leavingReason"]
+					];
+
+					$err = $this->applicantModel->addResidence($data);
+					$err = $err == false ? "error adding applicant current residential history" : "";
+				}
+
+				if (empty($err) && !empty($applicantId) && array_key_exists("prevResApp", $post)) {
+					$form = $post["prevResApp"];
+					
+					if ($form["residence"] == "yes") {
+						$data = [
+							"applicantId"   => $applicantId,
+							"type"          => "previous",
+							"address"       => $form["address"],
+							"city"          => $form["city"],
+							"state"         => $form["state"],
+							"zip"           => $form["zip"],
+							"payment"       => str_replace(",", "", $form["payment"]),
+							"rentOwn"       => $form["rentOwn"],
+							"landlordName"  => $form["landlordName"],
+							"landlordPhone" => $form["landlordPhone"],
+							"leavingReason" => $form["leavingReason"]
+						];
+
+						$err = $this->applicantModel->addResidence($data);
+						$err = $err == false ? "error adding applicant previous residential history" : "";
+					}
+				}
+
+				if (empty($err) && !empty($applicantId) && array_key_exists("referencesApp", $post)) {
+					$form = $post["referencesApp"];
+					
+					for ($i=1; $i<=3; $i++) {					
+						$data = [
+							"applicantId"  => $applicantId,
+							"name"         => $form["name$i"],
+							"phone"        => $form["phone$i"],
+							"relationship" => $form["relationship$i"],
+							"yearsKnown"   => $form["yearsKnown$i"],
+							"address"      => $form["address$i"]
+						];
+
+						$err = $this->applicantModel->addReference($data);
+						$err = $err == false ? "error adding applicant references" : "";
+
+						if (!empty($err)) {
+							break;
+						}
+					}
+				}
+
+				if (empty($err) && !empty($applicantId) && array_key_exists("emergencyApp", $post)) {
+					$form = $post["emergencyApp"];
+					$data = [
+							"applicantId"  => $applicantId,
+							"name"         => $form["name"],
+							"phone"        => $form["phone"],
+							"relationship" => $form["relationship"],
+							"address"      => $form["address"]
+						];
+
+					$err = $this->applicantModel->addEmergency($data);
+					$err = $err == false ? "error adding applicant emergency contact" : "";
+				}
+
 				if (empty($err) && !empty($applicantId) && array_key_exists("infoCoapp", $post)) {
 					$form = $post["infoCoapp"];
 					
@@ -617,7 +753,7 @@
 							"supervisorName"  => null,
 							"supervisorPhone" => null,
 							"yearsEmployed"   => null,
-							"monthlyIncome"   => null					
+							"monthlyIncome"   => str_replace(",", "", $form["monthlyIncome"])			
 						];
 
 					if (strpos($form["status"], "full time") !== false || 
@@ -631,7 +767,6 @@
 						$data["supervisorName"]  = $form["supervisorName"];
 						$data["supervisorPhone"] = $form["supervisorPhone"];
 						$data["yearsEmployed"]   = $form["yearsEmployed"];
-						$data["monthlyIncome"]   = str_replace(",", "", $form["monthlyIncome"]);
 					}				
 
 					$err = $this->applicantModel->addEmployment($data);
@@ -677,6 +812,85 @@
 					$err = $err == false ? "error adding co-applicant credit history" : "";
 				}
 
+        if (empty($err) && !empty($coapplicantId) && array_key_exists("currResCoapp", $post)) {
+					$form = $post["currResCoapp"];
+					$data = [
+						"applicantId"   => $coapplicantId,
+						"type"          => "current",
+						"address"       => $form["address"],
+						"city"          => $form["city"],
+						"state"         => $form["state"],
+						"zip"           => $form["zip"],
+						"payment"       => str_replace(",", "", $form["payment"]),
+						"rentOwn"       => $form["rentOwn"],
+						"landlordName"  => $form["landlordName"],
+						"landlordPhone" => $form["landlordPhone"],
+						"leavingReason" => $form["leavingReason"]
+					];
+
+					$err = $this->applicantModel->addResidence($data);
+					$err = $err == false ? "error adding co-applicant current residential history" : "";
+				}
+
+				if (empty($err) && !empty($coapplicantId) && array_key_exists("prevResCoapp", $post)) {
+					$form = $post["prevResCoapp"];
+					
+					if ($form["residence"] == "yes") {
+						$data = [
+							"applicantId"   => $coapplicantId,
+							"type"          => "previous",
+							"address"       => $form["address"],
+							"city"          => $form["city"],
+							"state"         => $form["state"],
+							"zip"           => $form["zip"],
+							"payment"       => str_replace(",", "", $form["payment"]),
+							"rentOwn"       => $form["rentOwn"],
+							"landlordName"  => $form["landlordName"],
+							"landlordPhone" => $form["landlordPhone"],
+							"leavingReason" => $form["leavingReason"]
+						];
+
+						$err = $this->applicantModel->addResidence($data);
+						$err = $err == false ? "error adding co-applicant previous residential history" : "";
+					}
+				}
+
+				if (empty($err) && !empty($coapplicantId) && array_key_exists("referencesCoapp", $post)) {
+					$form = $post["referencesCoapp"];
+					
+					for ($i=1; $i<=3; $i++) {					
+						$data = [
+							"applicantId"  => $coapplicantId,
+							"name"         => $form["name$i"],
+							"phone"        => $form["phone$i"],
+							"relationship" => $form["relationship$i"],
+							"yearsKnown"   => $form["yearsKnown$i"],
+							"address"      => $form["address$i"]
+						];
+
+						$err = $this->applicantModel->addReference($data);
+						$err = $err == false ? "error adding co-applicant references" : "";
+
+						if (!empty($err)) {
+							break;
+						}
+					}
+				}
+
+				if (empty($err) && !empty($coapplicantId) && array_key_exists("emergencyCoapp", $post)) {
+					$form = $post["emergencyCoapp"];
+					$data = [
+							"applicantId"  => $coapplicantId,
+							"name"         => $form["name"],
+							"phone"        => $form["phone"],
+							"relationship" => $form["relationship"],
+							"address"      => $form["address"]
+						];
+
+					$err = $this->applicantModel->addEmergency($data);
+					$err = $err == false ? "error adding co-applicant emergency contact" : "";
+				}
+
 				if (empty($err) && !empty($applicantId) && array_key_exists("dependents", $post)) {
 					$form = $post["dependents"];
 					$num  = $form["numDependents"];
@@ -696,87 +910,8 @@
 						}
 					}
 				}
-
-				if (empty($err) && !empty($applicantId) && array_key_exists("currRes", $post)) {
-					$form = $post["currRes"];
-					$data = [
-						"applicantId"   => $applicantId,
-						"type"          => "current",
-						"address"       => $form["address"],
-						"city"          => $form["city"],
-						"state"         => $form["state"],
-						"zip"           => $form["zip"],
-						"payment"       => str_replace(",", "", $form["payment"]),
-						"rentOwn"       => $form["rentOwn"],
-						"landlordName"  => $form["landlordName"],
-						"landlordPhone" => $form["landlordPhone"],
-						"leavingReason" => $form["leavingReason"]
-					];
-
-					$err = $this->applicantModel->addResidence($data);
-					$err = $err == false ? "error adding current residential history" : "";
-				}
-
-				if (empty($err) && !empty($applicantId) && array_key_exists("prevRes", $post)) {
-					$form = $post["prevRes"];
-					
-					if ($form["residence"] == "yes") {
-						$data = [
-							"applicantId"   => $applicantId,
-							"type"          => "previous",
-							"address"       => $form["address"],
-							"city"          => $form["city"],
-							"state"         => $form["state"],
-							"zip"           => $form["zip"],
-							"payment"       => str_replace(",", "", $form["payment"]),
-							"rentOwn"       => $form["rentOwn"],
-							"landlordName"  => $form["landlordName"],
-							"landlordPhone" => $form["landlordPhone"],
-							"leavingReason" => $form["leavingReason"]
-						];
-
-						$err = $this->applicantModel->addResidence($data);
-						$err = $err == false ? "error adding previous residential history" : "";
-					}
-				}
-
-				if (empty($err) && !empty($applicantId) && array_key_exists("references", $post)) {
-					$form = $post["references"];
-					
-					for ($i=1; $i<=3; $i++) {					
-						$data = [
-							"applicantId"  => $applicantId,
-							"name"         => $form["name$i"],
-							"phone"        => $form["phone$i"],
-							"relationship" => $form["relationship$i"],
-							"yearsKnown"   => $form["yearsKnown$i"],
-							"address"      => $form["address$i"]
-						];
-
-						$err = $this->applicantModel->addReference($data);
-						$err = $err == false ? "error adding references" : "";
-
-						if (!empty($err)) {
-							break;
-						}
-					}
-				}
-
-				if (empty($err) && !empty($applicantId) && array_key_exists("emergency", $post)) {
-					$form = $post["emergency"];
-					$data = [
-							"applicantId"  => $applicantId,
-							"name"         => $form["name"],
-							"phone"        => $form["phone"],
-							"relationship" => $form["relationship"],
-							"address"      => $form["address"]
-						];
-
-					$err = $this->applicantModel->addEmergency($data);
-					$err = $err == false ? "error adding emergency contact" : "";
-				}
-
-				if (empty($err) && !empty($applicantId) && array_key_exists("vehicles", $post)) {
+        
+        if (empty($err) && !empty($applicantId) && array_key_exists("vehicles", $post)) {
 					$form = $post["vehicles"];
 					$num  = $form["numVehicles"];
 

@@ -158,6 +158,90 @@
 					<button type="submit" class="btn btn-next">NEXT</button>
 				</div>
 			</form>
+
+      <form class="form" id="currResApp" name="currResApp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">APPLICANT RESIDENTIAL HISTORY</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+			
+				<div class="form-group">
+					<label class="col-form-label required">Current Residence Street Address</label>
+					<input type="text" name="address" class="form-control flat" />
+				</div>
+				
+				<?php $formId="currResApp"; ?>
+				<?php require APP_ROOT."/views/inc/forms/residential.php"; ?>
+
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="currResApp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>
+			
+			<form class="form" id="prevResApp" name="prevResApp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">APPLICANT RESIDENTIAL HISTORY</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+				
+				<div class="form-group">
+					<label class="d-block col-form-label required">Do you have a previous residence?</label>
+					<input type="hidden" name="residence" />
+					<div class="invalid-feedback"></div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="residence[]" id="prevResApp-residence-yes" value="yes">
+						<label class="form-check-label" for="prevResApp-residence-yes">Yes</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="residence[]" id="prevResApp-residence-no" value="no">
+						<label class="form-check-label" for="prevResApp-residence-no">No</label>
+					</div>
+				</div>
+				
+				<div id="prevResApp-residence-expanded-content" style="display:none;">
+					<div class="form-group">
+						<label class="col-form-label required">Previous Residence Street Address</label>
+						<input type="text" name="address" class="form-control flat" />
+					</div>
+
+					<?php $formId="prevResApp"; ?>
+					<?php require APP_ROOT."/views/inc/forms/residential.php"; ?>
+				</div>
+
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="prevResApp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>
+
+			<form class="form" id="referencesApp" name="referencesApp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">APPLICANT PROFESSIONAL REFERENCES</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+				
+				<?php require APP_ROOT."/views/inc/forms/references.php"; ?>
+				
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="referencesApp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>			
+			
+			<form class="form" id="emergencyApp" name="emergencyApp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">APPLICANT EMERGENCY CONTACT</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+				
+				<?php require APP_ROOT."/views/inc/forms/emergency.php"; ?>
+				
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="emergencyApp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>
 			
 			<form class="form" id="infoCoapp" name="infoCoapp" action="/applicants/create" autocomplete="off">
 				<h2 class="card-title">CO-APPLICANT INFORMATION</h2>
@@ -308,6 +392,90 @@
 					<button type="submit" class="btn btn-next">NEXT</button>
 				</div>
 			</form>
+
+      <form class="form" id="currResCoapp" name="currResCoapp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">CO-APPLICANT RESIDENTIAL HISTORY</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+			
+				<div class="form-group">
+					<label class="col-form-label required">Current Residence Street Address</label>
+					<input type="text" name="address" class="form-control flat" />
+				</div>
+				
+				<?php $formId="currResCoapp"; ?>
+				<?php require APP_ROOT."/views/inc/forms/residential.php"; ?>
+
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="currResCoapp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>
+			
+			<form class="form" id="prevResCoapp" name="prevResCoapp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">CO-APPLICANT RESIDENTIAL HISTORY</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+				
+				<div class="form-group">
+					<label class="d-block col-form-label required">Do you have a previous residence?</label>
+					<input type="hidden" name="residence" />
+					<div class="invalid-feedback"></div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="residence[]" id="prevResCoapp-residence-yes" value="yes">
+						<label class="form-check-label" for="prevResCoapp-residence-yes">Yes</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="residence[]" id="prevResCoapp-residence-no" value="no">
+						<label class="form-check-label" for="prevResCoapp-residence-no">No</label>
+					</div>
+				</div>
+				
+				<div id="prevResCoapp-residence-expanded-content" style="display:none;">
+					<div class="form-group">
+						<label class="col-form-label required">Previous Residence Street Address</label>
+						<input type="text" name="address" class="form-control flat" />
+					</div>
+
+					<?php $formId="prevResCoapp"; ?>
+					<?php require APP_ROOT."/views/inc/forms/residential.php"; ?>
+				</div>
+
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="prevResCoapp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>
+
+			<form class="form" id="referencesCoapp" name="referencesCoapp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">CO-APPLICANT PROFESSIONAL REFERENCES</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+				
+				<?php require APP_ROOT."/views/inc/forms/references.php"; ?>
+				
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="referencesCoapp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>			
+			
+			<form class="form" id="emergencyCoapp" name="emergencyCoapp" action="/applicants/create" autocomplete="off">
+				<h2 class="card-title">CO-APPLICANT EMERGENCY CONTACT</h2>
+				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
+				
+				<?php require APP_ROOT."/views/inc/forms/emergency.php"; ?>
+				
+				<div class="form-group mt-4">
+					<input type="hidden" name="hdnFormId" value="emergencyCoapp" />
+					<input type="hidden" name="hdnCoapp"  />
+					<button type="button" class="btn btn-back">BACK</button>
+					<button type="submit" class="btn btn-next">NEXT</button>
+				</div>
+			</form>
 			
 			<form class="form" id="dependents" name="dependents" action="/applicants/create" autocomplete="off">
 				<h2 class="card-title">DEPENDENTS</h2>
@@ -321,91 +489,7 @@
 					<button type="button" class="btn btn-back">BACK</button>
 					<button type="submit" class="btn btn-next">NEXT</button>
 				</div>
-			</form>
-			
-			<form class="form" id="currRes" name="currRes" action="/applicants/create" autocomplete="off">
-				<h2 class="card-title">RESIDENTIAL HISTORY</h2>
-				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
-			
-				<div class="form-group">
-					<label class="col-form-label required">Current Residence Street Address</label>
-					<input type="text" name="address" class="form-control flat" />
-				</div>
-				
-				<?php $formId="currRes"; ?>
-				<?php require APP_ROOT."/views/inc/forms/residential.php"; ?>
-
-				<div class="form-group mt-4">
-					<input type="hidden" name="hdnFormId" value="currRes" />
-					<input type="hidden" name="hdnCoapp"  />
-					<button type="button" class="btn btn-back">BACK</button>
-					<button type="submit" class="btn btn-next">NEXT</button>
-				</div>
-			</form>
-			
-			<form class="form" id="prevRes" name="prevRes" action="/applicants/create" autocomplete="off">
-				<h2 class="card-title">RESIDENTIAL HISTORY</h2>
-				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
-				
-				<div class="form-group">
-					<label class="d-block col-form-label required">Do you have a previous residence?</label>
-					<input type="hidden" name="residence" />
-					<div class="invalid-feedback"></div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="residence[]" id="prevRes-residence-yes" value="yes">
-						<label class="form-check-label" for="prevRes-residence-yes">Yes</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="residence[]" id="prevRes-residence-no" value="no">
-						<label class="form-check-label" for="prevRes-residence-no">No</label>
-					</div>
-				</div>
-				
-				<div id="prevRes-residence-expanded-content" style="display:none;">
-					<div class="form-group">
-						<label class="col-form-label required">Previous Residence Street Address</label>
-						<input type="text" name="address" class="form-control flat" />
-					</div>
-
-					<?php $formId="prevRes"; ?>
-					<?php require APP_ROOT."/views/inc/forms/residential.php"; ?>
-				</div>
-
-				<div class="form-group mt-4">
-					<input type="hidden" name="hdnFormId" value="prevRes" />
-					<input type="hidden" name="hdnCoapp"  />
-					<button type="button" class="btn btn-back">BACK</button>
-					<button type="submit" class="btn btn-next">NEXT</button>
-				</div>
-			</form>
-
-			<form class="form" id="references" name="references" action="/applicants/create" autocomplete="off">
-				<h2 class="card-title">PROFESSIONAL REFERENCES</h2>
-				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
-				
-				<?php require APP_ROOT."/views/inc/forms/references.php"; ?>
-				
-				<div class="form-group mt-4">
-					<input type="hidden" name="hdnFormId" value="references" />
-					<input type="hidden" name="hdnCoapp"  />
-					<button type="button" class="btn btn-back">BACK</button>
-					<button type="submit" class="btn btn-next">NEXT</button>
-				</div>
 			</form>			
-			
-			<form class="form" id="emergency" name="emergency" action="/applicants/create" autocomplete="off">
-				<h2 class="card-title">EMERGENCY CONTACT</h2>
-				<p class="form-legend">(<span class="text-required">*</span> indicates a required field)</p>
-				
-				<?php require APP_ROOT."/views/inc/forms/emergency.php"; ?>
-				
-				<div class="form-group mt-4">
-					<input type="hidden" name="hdnFormId" value="emergency" />
-					<input type="hidden" name="hdnCoapp"  />
-					<button type="button" class="btn btn-back">BACK</button>
-					<button type="submit" class="btn btn-next">NEXT</button>
-				</div>
-			</form>
 			
 			<form class="form" id="vehicles" name="vehicles" action="/applicants/create" autocomplete="off">
 				<h2 class="card-title">VEHICLES</h2>
