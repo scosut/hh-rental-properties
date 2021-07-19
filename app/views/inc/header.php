@@ -20,7 +20,7 @@
 	<header class="header">
 		<div class="container header-container">
 			<div class="header-item">
-				<i class="fa fa-phone"></i> <a href="tel:6059406695">(605) 940-6696</a>
+				<i class="fa fa-phone"></i> <a href="tel:6059406696">(605) 940-6696</a>
 			</div>
 			<div class="header-item">
 				<i class="fa fa-envelope"></i> <a href="mailto:info@handhrentalproperties.com">info@handhrentalproperties.com</a>
