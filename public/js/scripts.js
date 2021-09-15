@@ -476,21 +476,6 @@ $(function () {
     });
   }
 
-  $("input[name='map']").blur(function (e) {
-    var div = document.createElement('div');
-    div.innerHTML = e.target.value;
-
-    var chd = div.firstElementChild;
-
-    if (chd) {
-      var src = chd.getAttribute('src');
-
-      if (src) {
-        e.target.value = src;
-      }
-    }
-  });
-
   $("#termsAgree").click(function () {
     $("#additional-terms").prop("checked", true);
   });
