@@ -33,7 +33,7 @@
 			$target_file  = $target_dir . basename($files["name"]);
 			$extension    = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 			$filename     = "property_{$id}_exterior.$extension";
-					
+
 			$err = move_uploaded_file($files["tmp_name"], $target_dir.basename($filename));
 			$err = $err == false ? $msg : $filename;
 			
@@ -412,7 +412,8 @@
 					$err = $err == false ? "error updating property" : "";
 
 					if (empty($err) && !empty($exterior)) {
-						$err = $this->moveExteriorFile($exterior, $id, "error replacing exterior file");
+            $err = $this->moveExteriorFile($exterior, $id, "error replacing exterior file");
+            $err = strpos($err, "error") === false ? "" : $err;
 					}
 
 					if (strpos($err, "error") === false) {
@@ -423,6 +424,8 @@
 								break;
 							}
 						}
+            
+            $err = strpos($err, "error") === false ? "" : $err;
 					}
 
 					if (strpos($err, "error") === false) {
