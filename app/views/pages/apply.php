@@ -20,7 +20,7 @@
 					<a href="/application" class="btn btn-schedule mt-1">APPLY NOW</a>
 					<?php else: ?>
 					<p>Thank you for your interest in one of our properties. Currently, all properties are rented. Please check back at a later time to see what is available.</p>
-					<img src="/public/img/none_available.png" class="mx-auto d-block"/>
+					<img src="/public/img/none_available.png" class="mx-auto d-block" alt="no houses available" />
 					<?php endif; ?>
 				</div>            
 			</div>

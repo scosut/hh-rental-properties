@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md sticky-top">
 	<div class="container">
-		<a class="navbar-brand" href="/"><img src="/public/img/logo.png"></a>
+		<a class="navbar-brand" href="/"><img src="/public/img/logo.png" alt="H&H Rental Properties logo"></a>
 		<button id="navbarToggler" class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarTogglerContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>

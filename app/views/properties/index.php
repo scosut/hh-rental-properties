@@ -17,7 +17,7 @@
 			<div class="card card-property">
 				<div class="card-img-wrapper <?= $p->formattedStatus; ?>">
 					<span class="card-price"><?= $p->formattedRent ?></span>
-					<img class="card-img-top" src="<?= $p->exteriorimage ?>" />
+					<img class="card-img-top" src="<?= $p->exteriorimage ?>" alt="exterior image" />
 				</div>
 				<div class="card-body">
 					<h5 class="card-title">

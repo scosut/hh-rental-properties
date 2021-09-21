@@ -37,7 +37,7 @@
 								<div class="row row-thumb align-items-center">
 									<div class="col-4 col-sm-3 col-thumb mt-2">
 										<a href="<?= $item->image; ?>" data-lightbox="interior-image-<?= $count; ?>">
-											<img src="<?= $item->image; ?>" class="img-fluid img-shadow" />
+											<img src="<?= $item->image; ?>" class="img-fluid img-shadow" alt="interior image" />
 										</a>										
 									</div>
 									<div class="col-8 col-sm-9">

@@ -124,7 +124,7 @@
 	<div class="row row-thumb mt-2">
 		<div class="col-4 col-sm-3 col-thumb">
 			<a href="<?= $data->exteriorimage; ?>" data-lightbox="exterior-images">
-				<img src="<?= $data->exteriorimage; ?>" class="img-fluid img-shadow" />
+				<img src="<?= $data->exteriorimage; ?>" class="img-fluid img-shadow" alt="exterior image" />
 			</a>
 		</div>
 	</div>

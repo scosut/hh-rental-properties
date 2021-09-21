@@ -18,14 +18,14 @@
 			<div class="col-md-8 mb-2 mb-md-0">
 				<div class="row">
 					<div class="col">
-						<img id="property-main-image" src="<?= $data->exteriorimage; ?>" class="img-fluid img-shadow" />
+						<img id="property-main-image" src="<?= $data->exteriorimage; ?>" class="img-fluid img-shadow" alt="exterior image" />
 					</div>
 				</div>
 				<div class="row row-thumb">
 				<?php foreach($data->interiorimages as $image): ?>				
 					<div class="col-2 col-lg-1 col-thumb mt-2">
 						<a href="<?= $image; ?>" data-lightbox="interior-images">
-							<img src="<?= $image; ?>" class="img-fluid img-shadow" />
+							<img src="<?= $image; ?>" class="img-fluid img-shadow" alt="interior image" />
 						</a>
 					</div>
 					<?php endforeach; ?>

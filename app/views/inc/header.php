@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Well-maintained houses available for rent from family-owned and operated business in Sioux Falls, South Dakota (SD).">
 	<title><?= SITE_NAME; ?><?= empty($page_name) ? '' : ' | ' . $page_name; ?></title>
 	<link rel="stylesheet" href="/public/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/public/css/lightbox.min.css" />
